@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import SingleCard from './components/singleCard/SingleCard'
+import WinBox from './components/winBox/WinBox'
 
 const cardImages = [
   { "src": "/img/helmet-1.png", matched: false},
@@ -17,6 +18,7 @@ function App() {
   const [choiceOne, setChoiceOne] = useState(null)
   const [choiceTwo, setChoiceTwo] = useState(null)
   const [disabled, setDisabled] = useState(false)
+  const [checkWinS, setCheckWinS] = useState(false)
 
 
   const shuffleCards = () => {
@@ -24,6 +26,8 @@ function App() {
         .sort(() => Math.random() - 0.5)
         .map((card) => ({ ...card, id: Math.random() }))
 
+    setChoiceOne(null)
+    setChoiceTwo(null)
     setCards(shuffledCards)   
     setTurns(0)
   }
@@ -31,12 +35,12 @@ function App() {
   // handle a choice
   const handleChoice = (card) => {
     choiceOne ? setChoiceTwo(card) : setChoiceOne(card)
-    
   }
 
   // compare 2 selected cards
   useEffect(() => {
     if(choiceOne && choiceTwo) {
+      checkWin()
       setDisabled(true)
 
         if(choiceOne.src === choiceTwo.src){
@@ -64,11 +68,40 @@ function App() {
     setDisabled(false)
   }
 
+  //start a new game auto
+  useEffect(() => {
+    shuffleCards()
+  }, [])
+
+  //check win
+  const checkWin = () => {
+    let countCard = 0
+    cards.forEach((card) => {
+      if(card.matched) {
+        countCard++
+      };
+    })
+
+    if(countCard === 10) {
+
+      setTimeout(() =>{
+        setCheckWinS(true)
+        shuffleCards()
+      }, 1000) 
+
+      setTimeout(() =>{
+        setCheckWinS(false)
+        shuffleCards()
+      }, 18000) 
+
+    } 
+  }
+
   return (
     <div className="App">
+      {checkWinS ? <WinBox /> : <>  
       <h1>Magic Match</h1>
-      <button onClick={shuffleCards}>New Game</button>
-
+      <button onClick={shuffleCards}>New Game</button>   
       <div className="card-grid">
         {cards.map(card => (
           <SingleCard 
@@ -80,6 +113,10 @@ function App() {
           />
         ))}
       </div>
+      <p>Turns: {turns}</p>
+      </> 
+      }
+
     </div>
   );
 }
