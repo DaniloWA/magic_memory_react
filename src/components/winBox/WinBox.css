@@ -1,0 +1,14 @@
+.winBox {
+  background-color: rgba(255, 255, 255, 0.157);
+  border-radius: 25px;
+  padding: 15px;
+}
+
+.winBox h1 {
+  color: green;
+  margin: 0;
+}
+
+.winBox p {
+  color: black;
+}
