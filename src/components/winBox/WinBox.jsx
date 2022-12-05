@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import './WinBox.css'
 
-const WinBox = () => {
+const WinBox = ({ turns }) => {
   const [seconds, setSeconds] = React.useState(15);
 
   useEffect(() => {
@@ -13,7 +13,7 @@ const WinBox = () => {
   return (
     <div className='winBox'>
         <h1>You Win!!!</h1>
-        <p>Turnos : </p>
+        <p>Turnos : { turns }</p>
         <small>Time to Restart: {seconds}</small>
     </div>
   )
