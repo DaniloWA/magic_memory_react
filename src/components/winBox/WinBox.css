@@ -12,3 +12,8 @@
 .winBox p {
   color: black;
 }
+
+.winBox span {
+  font-size: 40px;
+  color: white;
+}

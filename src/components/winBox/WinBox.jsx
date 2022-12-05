@@ -13,7 +13,7 @@ const WinBox = ({ turns }) => {
   return (
     <div className='winBox'>
         <h1>You Win!!!</h1>
-        <p>Turnos : { turns }</p>
+        <p>Turnos:  <span>{ turns }</span></p>
         <small>Time to Restart: {seconds}</small>
     </div>
   )
