@@ -47,6 +47,13 @@ function App() {
   }, [choiceOne, choiceTwo])
 
 
+  // reset choices & increase turn
+  const resetTurn = () => {
+    setChoiceOne(null)
+    setChoiceTwo(null)
+    setTurns(prevTurns => prevTurns + 1)
+  }
+
   return (
     <div className="App">
       <h1>Magic Match</h1>
@@ -54,7 +61,11 @@ function App() {
 
       <div className="card-grid">
         {cards.map(card => (
-          <SingleCard key={card.id} card={card} />
+          <SingleCard 
+            key={card.id} 
+            card={card} 
+            handleChoice={handleChoice}
+          />
         ))}
       </div>
     </div>
