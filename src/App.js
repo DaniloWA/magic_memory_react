@@ -99,7 +99,7 @@ function App() {
 
   return (
     <div className="App">
-      <a href="https://github.com/DaniloWA/terminal-3.0" class="fork">
+      <a href="https://github.com/DaniloWA/terminal-3.0" className="fork">
         <img src="https://github.blog/wp-content/uploads/2008/12/forkme_right_green_007200.png?resize=149%2C149" width="149" height="149" alt="Fork me on GitHub"/>
       </a>
       {checkWinS ? <WinBox /> : <>  
