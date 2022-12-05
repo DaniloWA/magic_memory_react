@@ -86,7 +86,6 @@ function App() {
 
       setTimeout(() =>{
         setCheckWinS(true)
-        shuffleCards()
       }, 1000) 
 
       setTimeout(() =>{
