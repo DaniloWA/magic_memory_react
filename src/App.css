@@ -17,12 +17,61 @@ button:hover {
   color: #fff;
 }
 
+.skills {
+  grid-area: "skills";
+}
+
 .card-grid {
+  grid-area: "card-grid";
   margin-top: 40px;
+  margin-bottom: 20px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
+
+.header {
+  grid-area: "header";
+  display: grid;
+  grid-template-columns: 1fr 1.1fr 1fr;
+  grid-template-areas: 
+    'lifeBox title_button difficulty'
+  ;
+}
+
+.lifeBox {
+  grid-area: 'lifeBox';
+  justify-self: stretch;
+  align-self: end;
+  border: 2.5px solid white;
+  border-radius: 5px;
+  background-color: #370784;
+}
+
+.title_button {
+  grid-area: 'title_button';
+}
+
+.title_button h1 {
+  margin-bottom: 40px;
+}
+
+.difficulty {
+  grid-area: 'difficulty';
+  justify-self: stretch;
+  align-self: end;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 .fork {
   position: absolute;
