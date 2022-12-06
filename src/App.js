@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import Difficulty from './components/difficulty/Difficulty'
+import LifeBox from './components/lifeBox/LifeBox'
 import SingleCard from './components/singleCard/SingleCard'
+import Skills from './components/skills/Skills'
 import WinBox from './components/winBox/WinBox'
 
 const cardImages = [
@@ -20,6 +23,9 @@ function App() {
   const [disabled, setDisabled] = useState(false)
   const [checkWinS, setCheckWinS] = useState(false)
 
+  const [life, setLife] = useState(4) // max 4
+  const [difficulty, setDifficulty] = useState(0) // max 4
+  console.log(difficulty, 'setDifficulty')
 
   const shuffleCards = () => {
     const shuffledCards = [...cardImages, ...cardImages]
@@ -98,12 +104,24 @@ function App() {
 
   return (
     <div className="App">
+      <Skills />
       <a href="https://github.com/DaniloWA/magic_memory_react" className="fork">
         <img src="https://github.blog/wp-content/uploads/2008/12/forkme_right_green_007200.png?resize=149%2C149" width="149" height="149" alt="Fork me on GitHub"/>
       </a>
       {checkWinS ? <WinBox turns={turns}/> : <>  
-      <h1>Magic Match</h1>
-      <button onClick={shuffleCards}>New Game</button>   
+      <div className='header'>
+        <div className='lifeBox'>
+          <LifeBox />
+        </div>
+        <div className='title_button'>
+          <h1>Magic Match</h1>
+          <button onClick={shuffleCards}>New Game</button>   
+        </div>
+        <div className='difficulty'>
+          <Difficulty setDifficulty={setDifficulty} />
+        </div>
+      </div>
+      
       <div className="card-grid">
         {cards.map(card => (
           <SingleCard 
@@ -115,10 +133,13 @@ function App() {
           />
         ))}
       </div>
+      
       <p>Turns: {turns}</p>
       </> 
       }
+      
     </div>
+    
   );
 }
 
