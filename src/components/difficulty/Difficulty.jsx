@@ -5,13 +5,18 @@ const difficultyList = ['Grandmother', 'Student', 'Genius', 'Impossible']
 
 const Difficulty = ({ setDifficulty }) => {
   const [difficult, setDifficult] = useState(0)
-  setDifficulty(2)
+
+  const handleClick = (e) => {
+    setDifficult(e)
+    setDifficulty(e)
+  }
+
   return (
     <div className="box">
       <small>Difficulty</small>
-      <select value={difficult} onChange={setDifficult()}>
+      <select value={difficult} onChange={(e) => handleClick(e.target.value)}>
         {difficultyList.map((difficult, i) => {
-            return <option key={Math.random()} value={i} onClick={() => {setDifficult(i)}} >{difficult}</option>
+            return <option key={Math.random()} value={i} >{difficult}</option>
         })}
       </select>
     </div>
